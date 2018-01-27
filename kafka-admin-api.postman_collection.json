@@ -1,0 +1,115 @@
+{
+	"info": {
+		"name": "kafka-admin-api",
+		"_postman_id": "30188e76-da9f-6f98-ac52-08f99e56b4ad",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get all topics",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"foobar\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/topics",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"topics"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get topic by name",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"foobar\"\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/topics",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"topics"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Create topic",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"foobar\",\n\t\"partitions\": 10,\n\t\"replicationFactor\": 1\n}"
+				},
+				"url": {
+					"raw": "localhost:8080/topics",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"topics"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete topic",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8080/topics/Berta",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"topics",
+						"Berta"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
