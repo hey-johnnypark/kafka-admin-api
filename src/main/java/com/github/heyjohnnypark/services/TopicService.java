@@ -7,7 +7,6 @@ import java.util.Collection;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
 import org.apache.kafka.clients.admin.AdminClient;
-import org.apache.kafka.clients.admin.NewTopic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,7 +29,7 @@ public class TopicService {
             .withPartitions(topicDesc.partitions().size())
             .withReplicationFactor((short) topicDesc.partitions().get(0).replicas().size())
             .build())
-        .sorted(TopicHelper::compareByName)
+        .sorted(ServiceHelper::compareByName)
         .collect(Collectors.toList());
   }
 
@@ -48,7 +47,7 @@ public class TopicService {
             .withPartitions(topicDesc.partitions().size())
             .withReplicationFactor((short) topicDesc.partitions().get(0).replicas().size())
             .build())
-        .sorted(TopicHelper::compareByName)
+        .sorted(ServiceHelper::compareByName)
         .collect(Collectors.toList())
         .get(0);
   }
@@ -56,7 +55,7 @@ public class TopicService {
 
   public void createTopic(Topic topic) throws ExecutionException, InterruptedException {
     adminClient
-        .createTopics(Arrays.asList(TopicHelper.fromTopic(topic)))
+        .createTopics(Arrays.asList(ServiceHelper.fromTopic(topic)))
         .values()
         .get(topic.getName())
         .get();
