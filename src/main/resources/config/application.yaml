@@ -1,3 +1,6 @@
 kafka:
   admin:
     bootstrap.servers: localhost:9092
+    client.id: kafka-admin-api
+server:
+  port: 8080

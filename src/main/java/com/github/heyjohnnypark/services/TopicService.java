@@ -5,13 +5,20 @@ import com.github.heyjohnnypark.model.Topic.TopicBuilder;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
+import javax.annotation.PreDestroy;
 import org.apache.kafka.clients.admin.AdminClient;
+import org.apache.kafka.clients.admin.ListTopicsOptions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class TopicService {
+
+  private static Logger LOG = LoggerFactory.getLogger(TopicService.class);
 
   @Autowired
   private AdminClient adminClient;
@@ -31,6 +38,12 @@ public class TopicService {
             .build())
         .sorted(ServiceHelper::compareByName)
         .collect(Collectors.toList());
+  }
+
+  @PreDestroy
+  private void preDestroy() {
+    LOG.info("CLose Kafka admin client: {}", adminClient);
+    adminClient.close(3, TimeUnit.SECONDS);
   }
 
   public Topic getTopic(String topicName)
@@ -71,7 +84,7 @@ public class TopicService {
 
   private Collection<String> fetchAllTopicNames() throws ExecutionException, InterruptedException {
     return adminClient
-        .listTopics()
+        .listTopics(new ListTopicsOptions().timeoutMs(500))
         .names()
         .get();
   }

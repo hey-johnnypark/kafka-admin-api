@@ -1,0 +1,6 @@
+kafka:
+  admin:
+    bootstrap.servers: broker:9092
+    cliend.id: kafka-admin-api
+server:
+  port: 8080
