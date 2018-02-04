@@ -9,7 +9,7 @@
 
   <groupId>com.github.hey-johnnypark</groupId>
   <artifactId>kafka-admin-api</artifactId>
-  <version>0.1-SNAPSHOT</version>
+  <version>0.2-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <properties>
@@ -93,6 +93,7 @@
 
   <scm>
     <developerConnection>scm:git:https://github.com/hey-johnnypark/kafka-admin-api.git</developerConnection>
+    <tag>HEAD</tag>
   </scm>
 
   <profiles>
