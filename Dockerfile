@@ -1,4 +1,4 @@
-FROM openjdk:8-jre
+FROM frolvlad/alpine-oraclejdk8
 
 ARG JAR_FILE
 ENV JAR_FILE $JAR_FILE
