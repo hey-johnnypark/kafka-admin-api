@@ -74,7 +74,7 @@
         <artifactId>maven-release-plugin</artifactId>
         <configuration>
           <goals>install</goals>
-          <tagNameFormat>@{project.version}</tagNameFormat>
+          <tagNameFormat>release/@{project.version}</tagNameFormat>
         </configuration>
       </plugin>
     </plugins>
@@ -93,7 +93,6 @@
 
   <scm>
     <developerConnection>scm:git:https://github.com/hey-johnnypark/kafka-admin-api.git</developerConnection>
-    <tag>HEAD</tag>
   </scm>
 
   <profiles>
