@@ -1,9 +1,15 @@
 # Kafka Admin API
-> Spring boot based restful wrapper for administrate Apache Kafka brokers.   
 
-Integrating the Kafka native protocol sometimes 
+> Restful API for Kafka broker administration based on Spring Boot.
 
-## Installing / Getting started
+Current implemented features
+* Create, Retrieve and Delete topics
+ 
+## Getting started (with Docker)
+
+```shell
+
+```
 
 A quick introduction of the minimal setup you need to get a hello world up &
 running.

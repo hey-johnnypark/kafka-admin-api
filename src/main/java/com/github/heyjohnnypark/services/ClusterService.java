@@ -4,7 +4,9 @@ import com.github.heyjohnnypark.model.ClusterInfo;
 import com.github.heyjohnnypark.model.ClusterInfo.ClusterInfoBuilder;
 import com.github.heyjohnnypark.model.ClusterNode;
 import com.github.heyjohnnypark.model.ClusterNode.ClusterNodeBuilder;
+import java.util.Collection;
 import java.util.concurrent.ExecutionException;
+import java.util.stream.Collectors;
 import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.DescribeClusterResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,7 +47,7 @@ public class ClusterService {
         .get()
         .stream()
         .filter(node -> id.equals(node.idString()))
-        .map(node -> ServiceHelper.fromNode(node))
+        .map(ServiceHelper::fromNode)
         .findFirst()
         .orElseGet(null);
   }
@@ -54,5 +56,12 @@ public class ClusterService {
     return ServiceHelper.fromNode(adminClient.describeCluster().controller().get());
   }
 
-
+  public Collection<ClusterNode> getNodes() throws ExecutionException, InterruptedException {
+    DescribeClusterResult call = adminClient.describeCluster();
+    return call.nodes()
+        .get()
+        .stream()
+        .map(ServiceHelper::fromNode)
+        .collect(Collectors.toList());
+  }
 }

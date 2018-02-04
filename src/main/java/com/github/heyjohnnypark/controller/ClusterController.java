@@ -3,6 +3,7 @@ package com.github.heyjohnnypark.controller;
 import com.github.heyjohnnypark.model.ClusterInfo;
 import com.github.heyjohnnypark.model.ClusterNode;
 import com.github.heyjohnnypark.services.ClusterService;
+import java.util.Collection;
 import java.util.concurrent.ExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,6 +21,11 @@ public class ClusterController {
     return clusterService.getClusterInfo();
   }
 
+  @GetMapping("/cluster/nodes")
+  public Collection<ClusterNode> getClusterNodes() throws ExecutionException, InterruptedException {
+    return clusterService.getNodes();
+  }
+
   @GetMapping("/cluster/nodes/{nodeId}")
   public ClusterNode getNodeInfo(@PathVariable(name = "nodeId") String nodeId)
       throws ExecutionException, InterruptedException {
@@ -31,8 +37,5 @@ public class ClusterController {
       throws ExecutionException, InterruptedException {
     return clusterService.getLeaderNode();
   }
-
-
-
 
 }
