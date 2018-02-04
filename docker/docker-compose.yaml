@@ -1,0 +1,10 @@
+version: '3'
+services:
+  kafka-broker:
+    image: johnnypark/kafka-zookeeper
+  kafka-admin-api:
+    image: johnnypark/kafka-admin-api
+    links:
+    - kafka-broker:kafka-broker
+    ports:
+    - 8080:8080
