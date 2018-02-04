@@ -65,7 +65,8 @@
         </executions>
         <configuration>
           <skip>${skip.docker}</skip>
-          <repository>johnnypark/${project.artifactId}</repository>
+          <repository>docker.io/johnnypark/${project.artifactId}</repository>
+          <useMavenSettingsForAuth>true</useMavenSettingsForAuth>
           <tag>${project.version}</tag>
           <buildArgs>
             <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
