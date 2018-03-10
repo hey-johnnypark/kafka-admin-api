@@ -7,23 +7,23 @@ Current implemented features
  
 ## Getting started (with Docker)
 
-TBD
+Coming soon
 
 ## Developing
 
-TBD
+Coming soon
 
 ### Building
 
-TBD
+Coming soon
 
 ## Features
 
-TBD
+Coming soon
 
 ## Configuration
 
-TBD
+Coming soon
 
 
 
